@@ -1,0 +1,158 @@
+---
+title: "A Dynamic Analysis of the Market for Wide-Bodied Commercial Aircraft"
+author: "C. Lanier Benkard, presented by Jacob Thompson"
+date: "March 3, 2019"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Motivation
+
+- Empirical: firms often sell jetliners below static marginal cost, in contrast to standard models of firms in competition or oligopoly
+- Lockheed L-1011 sold for below average variable cost for entire production run!
+![Price vs AVC for Lockheed L-1011](C:\\Users\\jthom\\Pictures\\L-1011.png)
+
+##Motivation cont. 
+
+- Policy: airlines are the target of industrial policy
+- Past theoretical literature finds that under certain conditions an unrestrained monopoly may pareto-dominate an oligopoly
+
+## Empirical Strategy
+
+- Develop dynamic model with learning curves, differentiated products, entry costs, and closed loop strategic interaction
+- Estimate the primitives of the model
+- Find equilibrium 
+
+## Theoretical Model
+- Dynamic programming problem
+- Products indexed by $j \in \mathbb{N}$, time periods indexed by $t \in \mathbb{N}$
+- Three state variables per product, experience with product-j 
+- $E_{jt} \in \mathcal{E}$,- the product's "type" $\mu_j \in \mathcal{A}$ and 
+- the product's quality $\xi_{jt} \in \mathcal{X}$
+- Sets $\mathcal{E}, \mathcal{A}, \mathcal{X}$ are sets of possible experience levels, product types and product quality levels. 
+
+## Incumbent's Bellman system
+
+- $$V(i,s,M)=max_{\chi_i^e,\chi_j,q_j\forall j\in \mathcal{J}_i}\{-\sum_{k=1}^31\{\chi^e_i=k\}x_k^e$$ $$ + \sum_{j\in\mathcal{J}_i}[\chi_j\Phi_{jt}+(1-\chi_j)\pi_j(i,s,q,M)]$$  $$+ \beta \sum_{i',s',M'}V(i',s',M')\mathcal{P}(i',s',M'\vert i,s,q,M,\chi,\chi^e)\}$$
+
+## Incumbent Bellman, cont. 
+
+- State variables are: $\mathcal{J}_i$ is set of products owned by firm $i$, 
+- $\mathcal{M}$ is aggregate plane demand
+- $\phi_{jt}$ is a random scrap-value for each product
+- $s_t$ is a vector whose length equals the number of possible firm-specific state-vectors
+- Each element of $s_t$ indicates the number of firms for which the possible state vector is the actual state vector
+
+
+## Incumbent Bellman, cont.  
+
+- Control variables are: exit rules, $\chi_{jt}\in\{0,1\}$ 
+- quantities oproduced $q_{jt}\in\mathbb{R}^+$
+- entry rules $x^i_{it}\in\{0,1,2,3\}$, 0, 1, 2, and 3 denote no entry, entry into small, medium, and wide-body jetliners
+- $\mathcal{P}$ denotes the transition probabilities for the future states. 
+- Is a more specific expression of $\beta E_t V(i_{t+1},s_{t+1},M_{t+1})$
+
+## Potential Entrant's Bellman system
+
+- $$V^e(s,M)=max_{\chi_i^e\in\{0,1,2,3\}}-\sum_{k=1}^31\{\chi_i^e=k\}x_k^e$$ $$+\beta\sum_{i',s',M'}V(i^e,s',M')\mathcal{P}(i^e,s',M'|s,q,M,\chi,\chi^e)$$
+
+## Profit function
+
+$$\pi_j(i,s,q,M)=p_j(i,s,q,M)q_j-c_j(i,q_j)$$
+
+## Equilibrium
+
+- Model restricts equilibria to "Markov-perfect Nash Equilibrium(MPE)"
+- MPE $\subset$ SPNE; best-response functions function only of payoff relevant state-variables
+- Further estrict equilibria further to symmetric equilibria
+- Equilibria symmetric if strategies for any two identical firms facing identical states are likewise identical. 
+
+## Estimating the model
+
+- labor requirements are characterized by: $$lnL_{lt}=lnA+\theta lnE_t+\gamma lnS_t+\varepsilon_{lt}$$
+- $L_{lt}$ is labor input for good $l$ at time $t$, $A$ is a constant, $E_t$ is experience, $\varepsilon_{lt}$ is a plane-specific productivity shock, $S_t$ is line-speed or the production rate. 
+
+## Learning by doing
+
+- $E_{t+1} = \delta E_t + q_t$ characterizes the evolution of the stock of experience
+- This process captures organizational "forgetting"
+- Intuition: turnover, lay-offs, and forgetting rarely-repeated tasks can cause effective experience to decline
+- Benkard(2000) estimates the monthly depreciation factor $\delta = .96$ for a total yearly depreciation of $.613=.96^{12}$
+- learning parameter $\theta$ estimated to be -.63, and $\gamma$ estimated to be .11, indicating slightly increasing returns to scale. 
+- to simplify the state space, Benkard defines $\mathcal{E} = \{1,10,20,40,70,110,165\}$
+
+## Estimation of Labor requirements
+
+![](C:\\Users\\jthom\\Pictures\\table 1.png)
+
+## Demand for Commercial Aircraft
+
+- Author eschews product-characteristic discrete choice model 
+- Individual planes often change operators
+- Treat aircraft purchases instead as rentals 
+- nested logit discrete choice model is estimated
+- Assumes that aircraft purchases are independent even within the same firm
+- Benkard(1996) argues that this assumption is relatively innocuous. 
+- nested logit includes two groups(nests), new and used (or narrow) planes
+- generates more reasonable substitution patterns over standard logit
+
+## Estimation cont.
+
+- Utility of a plane is denoted $u_{ijt} = x_{jt}\beta-\alpha p_{jt} + \xi_{jt}+\zeta_{igt}+(1-\lambda)\varepsilon_{ijt}$
+- $x_{jt}$ are observed qualities of the plane
+- $\xi_{jt}$ are unobserved qualities of plane
+- $\zeta_{igt}$ are unobserved group-specific tastes
+- $\varepsilon_{ijt}$ are group-plane-specific tastes
+
+## Estimation cont. 
+
+- Use GMM with an optimal weighting matrix with the following moment restriction: $$E[\xi_{jt}|Z_{jt},\theta_0]=0$$
+
+-Instruments include plane characteristics, wage rates, price of aluminium, and a model's time since rollout
+
+## Markov chain for aircraft demand 
+
+![](C:\\Users\\jthom\\Pictures\\markov table.png)
+
+## Simulation results
+
+![](C:\\Users\\jthom\\Pictures\\price_sim)
+
+## Simulation results cont. 
+
+![](C:\\Users\\jthom\\Pictures\\simulated_cost_curves)
+
+## Simulation results cont. 
+
+![](C:\\Users\\jthom\\Pictures\\simulated_quantity)
+
+## Alternative market structures
+
+- True market structure is compared to multi-product monopolist and multi-product social planner
+- Unrestricted monopolist produces greater surplus than the oligopolistic market
+- Consumers better off under actual market structure, but firms far worse off
+- Consumers even better off under Social plannner but firm worse off
+- Result of increasing returns to scale created by learning curve
+
+## Anti-trust policy
+
+![](C:\\Users\\jthom\\Pictures\\anti-trust)
+
+## Anti-trust policy cont. 
+
+- Note that actual concentration ratios do not change substantially
+- Primary result is reduction in supply by dominant firm
+- Table 9 re-simulates the model under alternative parameterizations
+- Only discount rate creates problems; larger $\beta$ causes more entry
+
+## Summary
+
+- Dynamic oligopoly with learning curve
+- Predicts many observed features of commercial jet industry
+- Concrete policy implications for anti-trust enforcement and litigation
+
