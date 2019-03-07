@@ -32,7 +32,8 @@ knitr::opts_chunk$set(echo = FALSE)
 - Dynamic programming problem
 - Products indexed by $j \in \mathbb{N}$, time periods indexed by $t \in \mathbb{N}$
 - Three state variables per product, experience with product-j 
-- $E_{jt} \in \mathcal{E}$,- the product's "type" $\mu_j \in \mathcal{A}$ and 
+- $E_{jt} \in \mathcal{E}$,
+- the product's "type" $\mu_j \in \mathcal{A}$ and 
 - the product's quality $\xi_{jt} \in \mathcal{X}$
 - Sets $\mathcal{E}, \mathcal{A}, \mathcal{X}$ are sets of possible experience levels, product types and product quality levels. 
 
