@@ -132,6 +132,10 @@ $$\pi_j(i,s,q,M)=p_j(i,s,q,M)q_j-c_j(i,q_j)$$
 
 ![](C:\\Users\\jthom\\Pictures\\simulated_quantity)
 
+## Simulation results cont. 
+
+![](C:\\Users\\jthom\\Pictures\\price_cost_ratio.png)
+
 ## Alternative market structures
 
 - True market structure is compared to multi-product monopolist and multi-product social planner
